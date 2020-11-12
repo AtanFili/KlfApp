@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    >
+
+    <TextView
+        android:id="@+id/facebook_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Facebook"
+        android:paddingTop="5dp"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/facebook_icon"
+        android:gravity="center"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/instagram_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Instagram"
+        android:paddingTop="5dp"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/insta_icon"
+        android:gravity="center"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/call_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Call"
+        android:paddingTop="5dp"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/contact"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
+
+
+</LinearLayout>
