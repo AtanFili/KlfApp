@@ -8,9 +8,12 @@ import com.gsixacademy.android.klfapp.MainActivity
 import com.gsixacademy.android.klfapp.R
 import com.gsixacademy.android.klfapp.adapters.PeopleAdapter
 import com.gsixacademy.android.klfapp.adapters.PeopleDataClickEvent
+import com.gsixacademy.android.klfapp.data.PeopleModel
 import kotlinx.android.synthetic.main.recycler.*
 
 class ListFragment:Fragment(){
+
+   var peopleList:PeopleModel?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,12 +27,12 @@ class ListFragment:Fragment(){
         super.onActivityCreated(savedInstanceState)
         initRecyclerView()
     }
-    private fun initRecyclerView(){
-        var peopleModel=(activity as MainActivity).peopleModel
+        private fun initRecyclerView(){
+        val peopleModel=(activity as MainActivity).peopleModel
 
-        recycler.adapter=PeopleAdapter {
-            if ( it is PeopleDataClickEvent.PeopleDataItemClicked){
-                var bundle=Bundle()
+        recycler.adapter=PeopleAdapter(peopleList?.people!!){
+            if (it is PeopleDataClickEvent.PeopleDataItemClicked){
+                val bundle=Bundle()
                 bundle.putParcelable("peopleData",it.peopleData)
                 findNavController().navigate(R.id.action_listFragment_to_profileFragment,bundle)
             }

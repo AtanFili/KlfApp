@@ -12,15 +12,15 @@
             app:destination="@id/listFragment" />
     </fragment>
     <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.gsixacademy.android.klfapp.fragments.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
         android:id="@+id/listFragment"
-        android:name="com.gsixacademy.android.klfapp.fragments.ListFragment"
+        android:name="ListFragment"
         android:label="ListFragment" >
         <action
             android:id="@+id/action_listFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.gsixacademy.android.klfapp.fragments.ProfileFragment"
-        android:label="ProfileFragment" />
 </navigation>
