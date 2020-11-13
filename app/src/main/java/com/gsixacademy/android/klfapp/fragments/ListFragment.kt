@@ -8,13 +8,12 @@ import com.gsixacademy.android.klfapp.MainActivity
 import com.gsixacademy.android.klfapp.R
 import com.gsixacademy.android.klfapp.adapters.PeopleAdapter
 import com.gsixacademy.android.klfapp.adapters.PeopleDataClickEvent
-import com.gsixacademy.android.klfapp.data.PeopleData
 import com.gsixacademy.android.klfapp.data.PeopleModel
 import kotlinx.android.synthetic.main.recycler.*
 
 class ListFragment:Fragment(){
 
-    var peopleList:PeopleData?=null
+   var peopleList:PeopleModel?=null
     lateinit var peopleAdapter:PeopleAdapter
 
     override fun onCreateView(
@@ -22,7 +21,7 @@ class ListFragment:Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_list,container,false)
+        return inflater.inflate(R.layout.recycler,container,false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -32,14 +31,17 @@ class ListFragment:Fragment(){
         private fun initRecyclerView(){
         val peopleModel=(activity as MainActivity).peopleModel
 
-       peopleAdapter=PeopleAdapter(peopleList){
-           if (it is PeopleDataClickEvent.PeopleDataItemClicked){
-               var bundle=Bundle()
-               bundle.putString("profileName",it.peopleData.name)
-               bundle.putString("profileImafe",it.peopleData.image)
-               findNavController().navigate(R.id.action_listFragment_to_profileFragment,bundle)
-           }
-       }
+            peopleAdapter=PeopleAdapter(peopleModel?.people!!){
+            if (it is PeopleDataClickEvent.PeopleDataItemClicked){
+                var bundle=Bundle()
+                bundle.putString("profileName",it.peopleData.name)
+                bundle.putString("profilePicture",it.peopleData.image)
+                findNavController().navigate(R.id.action_listFragment_to_profileFragment,bundle)
+            }
+
+
+        }
+            recycler.adapter=peopleAdapter
 
     }
 

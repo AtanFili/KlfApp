@@ -13,12 +13,12 @@ import kotlinx.android.synthetic.main.fragment_profile.view.about_tv
 
 class PeopleAdapter(
     val peopleDatas:ArrayList<PeopleData>,
-    val peopleDatasClickEvent:(PeopleDataClickEvent)->Unit):RecyclerView.Adapter<RecyclerView.ViewHolder>
+    val peopleDatasClickEvent:(PeopleDataClickEvent.PeopleDataItemClicked)->Unit):RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     (){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_profile,parent,false)
+            LayoutInflater.from(parent.context).inflate(R.layout.fragment_list,parent,false)
         )
     }
 
@@ -35,8 +35,11 @@ class PeopleAdapter(
         fun bindData(peopleData: PeopleData,position: Int){
             itemView.imePrezime_tv.text=peopleData.name
             Picasso.get().load(peopleData.image).fit().into(itemView.profilePic_iv)
-
+            itemView.list_layout.setOnClickListener{
+                peopleDatasClickEvent.invoke(PeopleDataClickEvent.PeopleDataItemClicked(peopleData))
+            }
         }
+
 
     }
 }
